@@ -1,3 +1,4 @@
+//START-OF-SCRIPT
 node {
     def server = Artifactory.server 'artifactory'
     
@@ -11,16 +12,16 @@ node {
     def buildInfo
 
     stage ('Clone') {
-        git url: 'https://github.com/jeremycook123/skynet.git'
+        git url: 'https://github.com/cloudacademy/devops-webapp.git'
     }
 
-    stage ('Artifactory configuration') {
+    stage ('Artifactory Configuration') {
         rtGradle.tool = "gradle-4.10.2" // Tool name from Jenkins configuration
         rtGradle.deployer repo: 'gradle-release-local', server: server
         rtGradle.resolver repo: 'jcenter', server: server
     }
 
-    stage ('Gradle Clean/Build') {
+    stage ('Gradle Build') {
         buildInfo = rtGradle.run rootDir: "webapp/", buildFile: 'build.gradle', tasks: 'clean build'
     }
 
@@ -28,7 +29,8 @@ node {
         buildInfo = rtGradle.run rootDir: "webapp/", buildFile: 'build.gradle', tasks: 'artifactoryPublish'
     }
 
-    stage ('Publish build info') {
+    stage ('Artifactory Publish Build Info') {
         server.publishBuildInfo buildInfo
     }
 }
+//END-OF-SCRIPT
