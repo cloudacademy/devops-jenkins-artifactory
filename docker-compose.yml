@@ -24,8 +24,9 @@ services:
       - "2375"
   postgres:
     container_name: postgres
-    image: postgres-ca:latest
+    #image: postgres-ca:latest
     #image: postgres:9.6
+    image: postgres:9.6.11
     networks:
       - cloudacademylabs
     environment:
@@ -40,8 +41,9 @@ services:
         hard: 40000
   artifactory:
     container_name: artifactory
-    image: artifactory-ca:latest
-    #image: docker.bintray.io/jfrog/artifactory-oss:6.5.3    
+    #image: artifactory-ca:latest
+    #image: docker.bintray.io/jfrog/artifactory-oss:6.5.3
+    image: docker.bintray.io/jfrog/artifactory-oss:6.23.21
     networks:
       - cloudacademylabs
     ports:
