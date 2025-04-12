@@ -41,9 +41,8 @@ services:
         hard: 40000
   artifactory:
     container_name: artifactory
-    #image: artifactory-ca:latest
-    #image: docker.bintray.io/jfrog/artifactory-oss:6.5.3
-    image: docker.bintray.io/jfrog/artifactory-oss:6.23.21
+    # image: docker.bintray.io/jfrog/artifactory-oss:6.23.21
+    image: cloudacademydevops/artifactory-oss:6.23.21
     networks:
       - cloudacademylabs
     ports:
