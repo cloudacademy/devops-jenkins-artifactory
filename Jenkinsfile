@@ -18,7 +18,6 @@ node {
     stage ('Artifactory Configuration') {
         rtGradle.tool = "gradle" // Tool name from Jenkins configuration
         rtGradle.deployer repo: 'gradle-release-local', server: server
-        // rtGradle.resolver repo: 'jcenter', server: server
     }
 
     stage ('Gradle Build') {
