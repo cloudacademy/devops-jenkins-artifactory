@@ -12,7 +12,7 @@ node {
     def buildInfo
 
     stage ('Clone') {
-        git branch: 'gradle-fix', url: 'https://github.com/cloudacademy/devops-webapp.git'
+        git branch: 'artifactory', url: 'https://github.com/cloudacademy/devops-webapp.git'
     }
 
     stage ('Artifactory Configuration') {
