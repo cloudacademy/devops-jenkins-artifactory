@@ -12,13 +12,12 @@ node {
     def buildInfo
 
     stage ('Clone') {
-        git url: 'https://github.com/cloudacademy/devops-webapp.git'
+        git branch: 'artifactory', url: 'https://github.com/cloudacademy/devops-webapp.git'
     }
 
     stage ('Artifactory Configuration') {
         rtGradle.tool = "gradle" // Tool name from Jenkins configuration
         rtGradle.deployer repo: 'gradle-release-local', server: server
-        rtGradle.resolver repo: 'jcenter', server: server
     }
 
     stage ('Gradle Build') {
