@@ -2,7 +2,7 @@ version: "3.5"
 services:
   jenkins:
     container_name: jenkins
-    image: jenkins/jenkins:2.492.2-lts-jdk17
+    image: jenkins/jenkins:2.568.1-lts-jdk21
     networks:
       - cloudacademylabs
     ports:
@@ -13,8 +13,7 @@ services:
       - socat
   socat:
     container_name: socat
-    image: socat-ca:latest
-    #image: alpine/socat:latest
+    image: alpine/socat:1.8.1.3
     networks:
       - cloudacademylabs
     command: tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
@@ -41,7 +40,6 @@ services:
         hard: 40000
   artifactory:
     container_name: artifactory
-    # image: docker.bintray.io/jfrog/artifactory-oss:6.23.21
     image: cloudacademydevops/artifactory-oss:6.23.21
     networks:
       - cloudacademylabs
